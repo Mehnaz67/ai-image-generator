@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-wand-magic-sparkles"></i> AI Image Generator</h1>
+            <p>Transform your ideas into high-quality visual art</p>
+        </header>
+
+        <main class="generator-grid">
+            <section class="control-panel">
+                <form id="generateForm">
+                    <div class="input-group">
+                        <label for="prompt">Prompt</label>
+                        <textarea id="prompt" rows="4" placeholder="Describe the image you want to generate (e.g., A futuristic cyberpunk city at sunset)..." required></textarea>
+                    </div>
+
+                    <div class="options-row">
+                        <div class="input-group">
+                            <label for="style">Art Style</label>
+                            <select id="style">
+                                <option value="photorealistic">Photorealistic</option>
+                                <option value="digital-art">Digital Art</option>
+                                <option value="anime">Anime / Manga</option>
+                                <option value="3d-render">3D Render</option>
+                                <option value="oil-painting">Oil Painting</option>
+                                <option value="cyberpunk">Cyberpunk</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="dimensions">Aspect Ratio</label>
+                            <select id="dimensions">
+                                <option value="1024x1024">1:1 Square (1024x1024)</option>
+                                <option value="1280x720">16:9 Landscape (1280x720)</option>
+                                <option value="720x1280">9:16 Portrait (720x1280)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="generateBtn" class="primary-btn">
+                        <i class="fa-solid fa-bolt"></i> Generate Image
+                    </button>
+                </form>
+            </section>
+
+            <section class="display-panel">
+                <div class="image-wrapper" id="imageContainer">
+                    <div class="placeholder" id="placeholder">
+                        <i class="fa-regular fa-image"></i>
+                        <p>Your generated image will appear here</p>
+                    </div>
+                    <div class="spinner-container hidden" id="spinner">
+                        <div class="spinner"></div>
+                        <p>Generating your masterpiece...</p>
+                    </div>
+                    <img id="generatedImage" class="hidden" alt="AI Generated Output">
+                </div>
+
+                <div class="action-bar hidden" id="actionBar">
+                    <button id="downloadBtn" class="secondary-btn">
+                        <i class="fa-solid fa-download"></i> Download Image
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
